@@ -48,7 +48,6 @@ namespace Hangfire.SqlServer
         public SqlServerWriteOnlyTransaction([NotNull] SqlServerStorage storage, Func<DbConnection> dedicatedConnectionFunc)
         {
             if (storage == null) throw new ArgumentNullException(nameof(storage));
-
             _storage = storage;
             _dedicatedConnectionFunc = dedicatedConnectionFunc;
         }
