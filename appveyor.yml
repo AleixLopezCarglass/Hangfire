@@ -57,7 +57,7 @@ build_script:
   - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER) { SonarScanner.MSBuild.exe begin /k:"HangFireFork" /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de" /d:"sonar.analysis.mode=preview" /d:"sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER" /d:"sonar.github.repository=https://github.com/AleixLopezCarglass/Hangfire" /d:"sonar.github.oauth=$env:EncryptedGitHubAuthToken" }
   - ps: if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { SonarScanner.MSBuild.exe begin /k:"HangFireFork" /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de" }
   - build.bat ci
-  - SonarScanner.MSBuild.exe end /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de"
+  - SonarScanner.MSBuild.exe end /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de"
 
 after_build:
   - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
