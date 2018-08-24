@@ -54,7 +54,7 @@ cache:
 build_script:
   - choco install "sonarscanner-msbuild-net46" -y
   - choco install "sonarscanner-msbuild-netcoreapp2.0" -y
-  - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER) { SonarScanner.MSBuild.exe begin /k:"HangFireFork" /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de" /d:"sonar.analysis.mode=preview" /d:"sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER" /d:"sonar.github.repository=https://github.com/AleixLopezCarglass/Hangfire" /d:"sonar.github.oauth=$env:EncryptedGitHubAuthToken" }
+  - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER) { SonarScanner.MSBuild.exe begin /k:"HangFireFork" /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de" /d:sonar.analysis.mode="preview" /d:sonar.github.pullRequest="$env:APPVEYOR_PULL_REQUEST_NUMBER" /d:sonar.github.repository="https://github.com/AleixLopezCarglass/Hangfire" /d:sonar.github.oauth="/XLaz4CXs7eRiRG5zsKbT5hhF0A+U/WE+9bnnO1cdfnUXwKTSmgRyzcgxi58v5rQ" }
   - ps: if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { SonarScanner.MSBuild.exe begin /k:"HangFireFork" /d:sonar.organization="aleixlopezcarglass-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de" }
   - build.bat ci
   - SonarScanner.MSBuild.exe end /d:sonar.login="4e0a76ecad19028340d48e2d603b9208eef8e4de"
